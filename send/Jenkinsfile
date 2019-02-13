@@ -1,0 +1,19 @@
+node() {
+    def sendResult = sendCIMessage providerName: 'Red Hat UMB Stage', \
+    overrides: [topic: 'VirtualTopic.eng.ci.example.durable.test'], \
+                    messageType: 'Custom', \
+                    messageProperties: """ 
+    action=${env.BUILD_NUMBER}
+                    """, \
+                    messageContent: """
+                      {
+    
+    "action": "${env.BUILD_NUMBER}"
+  }
+                    """
+  // echo sent message id and content
+  echo sendResult.getMessageId()
+  echo sendResult.getMessageContent()
+
+}
+
