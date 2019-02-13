@@ -5,19 +5,17 @@ pipelineJob("receive") {
             stringParam('CI_MESSAGE', '', 'contents of message')
         }
 
-        if (isProduction) {
-            triggers {
-                ciBuildTrigger {
-                    providerData {
-                        activeMQSubscriberProviderData {
-                            name("Red Hat UMB Stage")
-                            overrides {
-                                topic("Consumer.rh-jenkins-ci-plugin.8abcd9900-123.VirtualTopic.eng.ci.example.durable.test")
-                            }
+        triggers {
+            ciBuildTrigger {
+                providerData {
+                    activeMQSubscriberProviderData {
+                        name("Red Hat UMB Stage")
+                        overrides {
+                            topic("Consumer.rh-jenkins-ci-plugin.8abcd9900-123.VirtualTopic.eng.ci.example.durable.test")
                         }
                     }
-                    noSquash(true)
                 }
+                noSquash(true)
             }
         }
 
