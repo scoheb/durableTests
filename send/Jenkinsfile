@@ -1,4 +1,8 @@
 node() {
+
+    // You need to have the provider 'Red Hat UMB Stage' defined
+    // in your global config
+    //
     def sendResult = sendCIMessage providerName: 'Red Hat UMB Stage', \
     overrides: [topic: 'VirtualTopic.eng.ci.example.durable.test'], \
                     messageType: 'Custom', \
