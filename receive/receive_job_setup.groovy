@@ -1,3 +1,6 @@
+// update this to be unique.
+def uuid = "8abcd9900-123"
+
 pipelineJob("receive") {
 
     definition {
@@ -11,7 +14,7 @@ pipelineJob("receive") {
                     activeMQSubscriberProviderData {
                         name("Red Hat UMB Stage")
                         overrides {
-                            topic("Consumer.rh-jenkins-ci-plugin.8abcd9900-123.VirtualTopic.eng.ci.example.durable.test")
+                            topic("Consumer.rh-jenkins-ci-plugin.${uuid}.VirtualTopic.eng.ci.example.durable.test")
                         }
                     }
                 }
