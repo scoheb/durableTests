@@ -9,12 +9,12 @@ for (int i = 0; i < triggerCount; i++) {
     overrides: [topic: 'VirtualTopic.eng.ci.example.durable.test'], \
                     messageType: 'Custom', \
                     messageProperties: """ 
-    action=${i}
+    action=${env.BUILD_NUMBER}-${i}
                     """, \
                     messageContent: """
                       {
     
-    "action": "${i}"
+    "action": "${env.BUILD_NUMBER}-${i}"
   }
                     """
   // echo sent message id and content
