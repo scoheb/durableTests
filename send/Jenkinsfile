@@ -14,7 +14,7 @@ for (int i = 0; i < triggerCount; i++) {
                     messageContent: """
                       {
     
-    "action": "${env.BUILD_NUMBER}"
+    "action": "${i}"
   }
                     """
   // echo sent message id and content
