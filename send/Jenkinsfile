@@ -3,11 +3,13 @@ node() {
     // You need to have the provider 'Red Hat UMB Stage' defined
     // in your global config
     //
+def triggerCount = 100
+for (int i = 0; i < triggerCount; i++) {
     def sendResult = sendCIMessage providerName: 'Red Hat UMB Stage', \
     overrides: [topic: 'VirtualTopic.eng.ci.example.durable.test'], \
                     messageType: 'Custom', \
                     messageProperties: """ 
-    action=${env.BUILD_NUMBER}
+    action=${i}
                     """, \
                     messageContent: """
                       {
@@ -18,6 +20,6 @@ node() {
   // echo sent message id and content
   echo sendResult.getMessageId()
   echo sendResult.getMessageContent()
-
+}
 }
 
