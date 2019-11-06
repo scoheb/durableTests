@@ -1,4 +1,4 @@
-node() {
+node('maven') {
     def ciData = readJSON text: env.CI_MESSAGE
     echo ciData['action']
     currentBuild.displayName = "#${currentBuild.id} From ${ciData['action']}"
